@@ -1,0 +1,6 @@
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Release\Revit_2018.csproj.AssemblyReference.cache
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Release\Revit_2018.csproj.CoreCompileInputs.cache
+F:\com\ibears\source\repos\SCGBox\Revit_2018\bin\Release\SCGBox.dll
+F:\com\ibears\source\repos\SCGBox\Revit_2018\bin\Release\SCGBox.pdb
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Release\SCGBox.dll
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Release\SCGBox.pdb

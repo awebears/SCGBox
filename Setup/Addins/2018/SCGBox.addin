@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>SCGBox</Name>
+    <Assembly>C:\ProgramData\Autodesk\Revit\Addins\2018\SCGBox\SCGBox.dll</Assembly>
+    <ClientId>b5756454-9523-4f63-b328-345fa3d44f5f</ClientId>
+    <FullClassName>SCGBox.Revit_2018.UI.RibbonUI</FullClassName>
+    <VendorId>SCG</VendorId>
+    <VendorDescription>SCG, www.SCGBIM.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

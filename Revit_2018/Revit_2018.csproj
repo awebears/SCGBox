@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C25E66A9-9675-4173-84EF-887F6BF76E57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Revit_2018</RootNamespace>
+    <AssemblyName>SCGBox</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdWindows">
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Gma.System.MouseKeyHook">
+      <HintPath>..\..\GeometryUtilForRevit\GeometryUtilForRevit\Resources\Gma.System.MouseKeyHook.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIFrameworkServices">
+      <HintPath>C:\Program Files\Autodesk\Revit 2018\UIFrameworkServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExcutionLibrary\AC\CorrectJoinRelationships.cs" />
+    <Compile Include="ExcutionLibrary\General\LinkRevit.cs" />
+    <Compile Include="ExcutionLibrary\Datum\StandardizeLevel.cs" />
+    <Compile Include="ExcutionLibrary\MEP\CutAllMepByLine.cs" />
+    <Compile Include="ExcutionLibrary\MEP\FilterSwitchers.cs" />
+    <Compile Include="ExcutionLibrary\Utils\LoadLibrary.cs" />
+    <Compile Include="ExcutionLibrary\Utils\MouseAndKeyBoard.cs" />
+    <Compile Include="ExcutionLibrary\Utils\WindowsHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\RibbonUI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WPFWindow\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\icon\共享坐标_16px.png" />
+    <EmbeddedResource Include="UI\icon\共享坐标_32px.png" />
+    <EmbeddedResource Include="UI\icon\关闭_16px.png" />
+    <EmbeddedResource Include="UI\icon\关闭_32px.png" />
+    <EmbeddedResource Include="UI\icon\删除_16px.png" />
+    <EmbeddedResource Include="UI\icon\删除_32px.png" />
+    <EmbeddedResource Include="UI\icon\加载_16px.png" />
+    <EmbeddedResource Include="UI\icon\加载_32px.png" />
+    <EmbeddedResource Include="UI\icon\卸载_16px.png" />
+    <EmbeddedResource Include="UI\icon\卸载_32px.png" />
+    <EmbeddedResource Include="UI\icon\原点_16px.png" />
+    <EmbeddedResource Include="UI\icon\原点_32px.png" />
+    <EmbeddedResource Include="UI\icon\基点_16px.png" />
+    <EmbeddedResource Include="UI\icon\基点_32px.png" />
+    <EmbeddedResource Include="UI\icon\打开_16px.png" />
+    <EmbeddedResource Include="UI\icon\打开_32px.png" />
+    <EmbeddedResource Include="UI\icon\断开_16px.png" />
+    <EmbeddedResource Include="UI\icon\断开_32px.png" />
+    <EmbeddedResource Include="UI\icon\标高_16px.png" />
+    <EmbeddedResource Include="UI\icon\标高_32px.png" />
+    <EmbeddedResource Include="UI\icon\点击_16px.png" />
+    <EmbeddedResource Include="UI\icon\点击_32px.png" />
+    <EmbeddedResource Include="UI\icon\重载_16px.png" />
+    <EmbeddedResource Include="UI\icon\重载_32px.png" />
+    <EmbeddedResource Include="UI\icon\隔离_16px.png" />
+    <EmbeddedResource Include="UI\icon\隔离_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExcutionLibrary\DependenceLibrary\Gma.System.MouseKeyHook.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\icon\切换_16px.png" />
+    <EmbeddedResource Include="UI\icon\切换_32px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

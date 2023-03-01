@@ -1,0 +1,12 @@
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\Revit_2018.csproj.AssemblyReference.cache
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\Revit_2018.csproj.CoreCompileInputs.cache
+F:\com\ibears\source\repos\SCGBox\Revit_2018\bin\Debug\SCGBox.dll
+F:\com\ibears\source\repos\SCGBox\Revit_2018\bin\Debug\SCGBox.pdb
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\SCGBox.dll
+F:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\SCGBox.pdb
+G:\com\ibears\source\repos\SCGBox\Revit_2018\bin\Debug\SCGBox.dll
+G:\com\ibears\source\repos\SCGBox\Revit_2018\bin\Debug\SCGBox.pdb
+G:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\Revit_2018.csproj.AssemblyReference.cache
+G:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\Revit_2018.csproj.CoreCompileInputs.cache
+G:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\SCGBox.dll
+G:\com\ibears\source\repos\SCGBox\Revit_2018\obj\Debug\SCGBox.pdb

@@ -1,0 +1,6 @@
+G:\com\ibears\source\repos\SCGBox\Branch\bin\Debug\Branch.dll
+G:\com\ibears\source\repos\SCGBox\Branch\bin\Debug\Branch.pdb
+G:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.csproj.AssemblyReference.cache
+G:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.csproj.CoreCompileInputs.cache
+G:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.dll
+G:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.pdb
