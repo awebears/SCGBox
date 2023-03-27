@@ -20,6 +20,9 @@ namespace Branch.Tools
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 Title = title,
+                CheckFileExists = true,
+                CheckPathExists = true,
+                ReadOnlyChecked = true,
                 Filter = filter,
                 Multiselect = false
             };
@@ -34,6 +37,9 @@ namespace Branch.Tools
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 Title = title,
+                CheckFileExists = true,
+                CheckPathExists = true,
+                ReadOnlyChecked = true,
                 Filter = filter,
                 Multiselect = true
             };

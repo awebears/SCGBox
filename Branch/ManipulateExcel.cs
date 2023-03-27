@@ -25,7 +25,11 @@ namespace Branch
                 return Result.Cancelled;
             }
             ExcelHandler excelHandler = new ExcelHandler(filePath);
-            excelHandler.AddWorkSheeet("TEST02",1);
+            excelHandler.AddWorkSheeet("TEST02", 1);
+            Worksheet worksheet_original = excelHandler.sheets[1] as Worksheet;
+            Worksheet worksheet_target = excelHandler.sheets[2] as Worksheet;
+            List<List<string>> lists = excelHandler.ReadSheet(worksheet_original);
+            excelHandler.WriteToSheet(worksheet_target, lists);
             excelHandler.Close();
             return Result.Succeeded;
         }
