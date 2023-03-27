@@ -16,6 +16,7 @@ namespace Branch.Tools
         private MOIE.Workbooks workBooks;
         private MOIE.Workbook workBook;
         public Sheets sheets { get; }
+
         public ExcelHandler(string filePath)
         {
             excel = new MOIE.Application() { Visible = false };
