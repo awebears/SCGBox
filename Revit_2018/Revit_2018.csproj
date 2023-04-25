@@ -79,6 +79,7 @@
     <Compile Include="ExcutionLibrary\Utils\MouseAndKeyBoard.cs" />
     <Compile Include="ExcutionLibrary\Utils\WindowsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\WindowsFileDialog.cs" />
     <Compile Include="UI\RibbonUI.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gma.System.MouseKeyHook.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

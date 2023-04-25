@@ -11,3 +11,6 @@ E:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.csproj.ResolveComRefer
 E:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.csproj.CoreCompileInputs.cache
 E:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.dll
 E:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.pdb
+E:\com\ibears\source\repos\SCGBox\Branch\bin\Debug\DocumentFormat.OpenXml.dll
+E:\com\ibears\source\repos\SCGBox\Branch\bin\Debug\DocumentFormat.OpenXml.xml
+E:\com\ibears\source\repos\SCGBox\Branch\obj\Debug\Branch.csproj.CopyComplete

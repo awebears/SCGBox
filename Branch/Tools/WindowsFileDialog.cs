@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,21 @@ namespace Branch.Tools
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 return openFileDialog.FileNames.ToList<string>();
+            }
+            return null;
+        }
+        public static string Save(string title = "SCGBox", string filter = "All Files(*.*)|*.*", string extension = ".xlsx")
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog()
+            {
+                Title = title,
+                Filter = filter,
+                DefaultExt = extension,
+                AddExtension = true,
+            };
+            if ((saveFileDialog.ShowDialog() == DialogResult.OK))
+            {
+                return saveFileDialog.FileName;
             }
             return null;
         }

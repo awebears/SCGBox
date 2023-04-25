@@ -56,9 +56,10 @@ namespace Revit_2018.ExcutionLibrary.General
             Document doc = uiApp.ActiveUIDocument.Document;
 
             TaskDialog taskDialog = new TaskDialog("SCGBox") { TitleAutoPrefix = false };
-
-            List<string> filePaths = LinkRevitUtils.PathSelector(out List<string> safeNames);//obtain filepaths
-            if (filePaths.Count == 0)
+            string filter = "Files(*.rvt)|*.rvt";
+            List<string> filePaths = Tools.WindowsFileDialog.MultiSelect(filter: filter);//obtain filepaths
+            //List<string> filePaths = LinkRevitUtils.PathSelector(out List<string> safeNames);//obtain filepaths
+            if (filePaths is null || filePaths.Count == 0)
             {
                 return Result.Failed;
             }

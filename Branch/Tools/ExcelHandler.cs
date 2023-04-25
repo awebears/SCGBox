@@ -30,11 +30,11 @@ namespace Branch.Tools
         /// </summary>
         /// <param name="name">工作表名称</param>
         /// <param name="index">在指定索引后插入工作表，工作表索引从 1 开始</param>
-        public void AddWorkSheeet(string name, int index = 1)
+        public void AddWorkSheeet(string name, int index = 1, bool after = true)
         {
             if (index < 1) index = 1;
             if (index > workSheetCount) index = workSheetCount;
-            Worksheet worksheet = workBook.Sheets.Add(After: sheets[index] as Worksheet);
+            Worksheet worksheet = after ? workBook.Sheets.Add(After: sheets[index] as Worksheet) : workBook.Sheets.Add(Before: sheets[index] as Worksheet);
             worksheet.Name = name;
         }
         /// <summary>
@@ -85,7 +85,6 @@ namespace Branch.Tools
                     Range range = worksheet.Cells[x + 1, y + 1] as Range;
                     range.Value = lists[x][y];
                 }
-
             }
         }
         /// <summary>

@@ -19,18 +19,30 @@ namespace Branch
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            string filePath = Branch.Tools.WindowsFileDialog.Select("SCGBox", "Excel Files (*.xlsx,*.xls) |*.xlsx;*.xls");
-            if (filePath is null)
-            {
-                return Result.Cancelled;
-            }
-            ExcelHandler excelHandler = new ExcelHandler(filePath);
-            excelHandler.AddWorkSheeet("TEST02", 1);
-            Worksheet worksheet_original = excelHandler.sheets[1] as Worksheet;
-            Worksheet worksheet_target = excelHandler.sheets[2] as Worksheet;
-            List<List<string>> lists = excelHandler.ReadSheet(worksheet_original);
-            excelHandler.WriteToSheet(worksheet_target, lists);
-            excelHandler.Close();
+
+            //string filePath = WindowsFileDialog.Select(filter: "Excel Files (*.xlsx,*.xls) |*.xlsx;*.xls");
+            //if (filePath is null)
+            //{
+            //    return Result.Cancelled;
+            //}
+            //OpenXmlHandler openXmlHandler = new OpenXmlHandler(filePath);
+            //openXmlHandler.ReOrderSheet();
+            //List<List<string>> strings = openXmlHandler.ReadSheet(1);
+            //openXmlHandler.AddSheet(strings);
+            //openXmlHandler.Dispose();
+
+            //string info = "";
+            //strings.ForEach(x =>
+            //{
+            //    string tem = "";
+            //    x.ForEach(y => tem += $"{y} , ");
+            //    info += $"{tem}\n";
+            //});
+            //MessageBox.Show(info);
+            //openXmlHandler.TestAdd();
+
+            MessageBox.Show(OpenXmlHandler.IterationLetter(26));
+
             return Result.Succeeded;
         }
     }
