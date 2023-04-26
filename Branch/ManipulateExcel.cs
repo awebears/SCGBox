@@ -11,6 +11,7 @@ using MOIE = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using Branch.Tools;
+using Parameter = Autodesk.Revit.DB.Parameter;
 
 namespace Branch
 {
@@ -20,28 +21,53 @@ namespace Branch
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
 
-            //string filePath = WindowsFileDialog.Select(filter: "Excel Files (*.xlsx,*.xls) |*.xlsx;*.xls");
-            //if (filePath is null)
-            //{
-            //    return Result.Cancelled;
-            //}
-            //OpenXmlHandler openXmlHandler = new OpenXmlHandler(filePath);
-            //openXmlHandler.ReOrderSheet();
-            //List<List<string>> strings = openXmlHandler.ReadSheet(1);
-            //openXmlHandler.AddSheet(strings);
-            //openXmlHandler.Dispose();
+            UIDocument uiDoc = commandData.Application.ActiveUIDocument;
+            Document doc = uiDoc.Document;
 
-            //string info = "";
-            //strings.ForEach(x =>
-            //{
-            //    string tem = "";
-            //    x.ForEach(y => tem += $"{y} , ");
-            //    info += $"{tem}\n";
-            //});
-            //MessageBox.Show(info);
-            //openXmlHandler.TestAdd();
+            List<Element> rebars = new FilteredElementCollector(doc).OfClass(typeof(FamilyInstance)).OfCategory(BuiltInCategory.OST_SpecialityEquipment).ToElements().ToList();
 
-            MessageBox.Show(OpenXmlHandler.IterationLetter(26));
+            List<List<string>> lists = new List<List<string>>() { new List<string>() { "型号", "长度" } };
+
+            rebars.ForEach(x =>
+            {
+                List<string> strings = new List<string>();
+                strings.Add(x.Name);
+                strings.Add(x.LookupParameter("净长度").AsValueString());
+                lists.Add(strings);
+            });
+
+            List<Element> links = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkInstance)).OfCategory(BuiltInCategory.OST_RvtLinks).ToElements().ToList();
+            if (links.Count > 0)
+            {
+                links.ForEach(x =>
+                {
+                    RevitLinkInstance revitLinkInstance = x as RevitLinkInstance;
+                    Document linkDoc = (x as RevitLinkInstance).GetLinkDocument();
+                    if (linkDoc != null)
+                    {
+                        List<Element> rebars_inlink = new FilteredElementCollector(linkDoc).OfClass(typeof(FamilyInstance)).OfCategory(BuiltInCategory.OST_SpecialityEquipment).ToElements().ToList();
+
+                        rebars_inlink.ForEach(y =>
+                        {
+                            List<string> strings = new List<string>();
+                            strings.Add(y.Name);
+                            strings.Add(y.LookupParameter("净长度").AsValueString());
+                            lists.Add(strings);
+                        });
+                    }
+                });
+            }
+
+            string newFilepath = WindowsFileDialog.Save(filter: "Excel Files (*.xlsx,*.xls) |*.xlsx;*.xls");
+            if (newFilepath is null)
+            {
+                return Result.Cancelled;
+            }
+            OpenXmlHandler newHandler = new OpenXmlHandler(OpenXmlHandler.CreateWorkbook(newFilepath));
+
+            newHandler.AddSheet(lists);
+
+            newHandler.Dispose();
 
             return Result.Succeeded;
         }
