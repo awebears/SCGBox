@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="RevitAPI">
@@ -75,6 +76,7 @@
     <Compile Include="ExcutionLibrary\Datum\StandardizeLevel.cs" />
     <Compile Include="ExcutionLibrary\MEP\CutAllMepByLine.cs" />
     <Compile Include="ExcutionLibrary\MEP\FilterSwitchers.cs" />
+    <Compile Include="ExcutionLibrary\Utils\LoadFamilyFromResources.cs" />
     <Compile Include="ExcutionLibrary\Utils\LoadLibrary.cs" />
     <Compile Include="ExcutionLibrary\Utils\MouseAndKeyBoard.cs" />
     <Compile Include="ExcutionLibrary\Utils\WindowsHelper.cs" />
@@ -154,6 +156,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Gma.System.MouseKeyHook.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\标高标头_上.rfa" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\标高标头_下.rfa" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\标高标头_正负零.rfa" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

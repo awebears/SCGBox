@@ -1,0 +1,28 @@
+﻿<Window x:Class="Branch.LinkWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Branch"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" Title="SCGBox" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Width="320" SizeToContent="WidthAndHeight" Loaded="Window_Load" Closing="Window_Closing">
+    <Grid>
+        <Label Content="操作对象：" HorizontalAlignment="Left" Height="35" Margin="20,25,0,0" VerticalAlignment="Top" Width="90"/>
+        <RadioButton Content="Revit链接" HorizontalAlignment="Left" Margin="110,32,0,0" VerticalAlignment="Top" Checked="RadioButton_Revit_checked" GroupName="RevitOrCAD" IsChecked="True" />
+        <RadioButton Content="CAD链接" HorizontalAlignment="Left" Margin="210,32,0,0" VerticalAlignment="Top" Checked="RadioButton_CAD_checked" GroupName="RevitOrCAD" RenderTransformOrigin="0.496,0.615" />
+        <GridSplitter HorizontalAlignment="Left" Height="5" Margin="0,70,0,0" VerticalAlignment="Top" Width="320" />
+        <Grid Name="grid_Revit" HorizontalAlignment="Left" Height="305" Margin="0,80,0,0" VerticalAlignment="Top" Width="320" >
+            <Label Content="链接定位：" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" />
+            <ComboBox Name ="combobox_Location" HorizontalAlignment="Left" Margin="130,22,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="combobox_Location_selectionChanged" />
+            <Label Content="操作层次：" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="保持当前" HorizontalAlignment="Left" Margin="110,90,0,0" VerticalAlignment="Top" Checked="RadioButton_Current_checked" GroupName="Revit_CurrentOrAll" IsChecked="true" ToolTip="保持当前链接Revit的状态进行重载、卸载、删除操作"/>
+            <RadioButton Content="所有" HorizontalAlignment="Left" Margin="210,90,0,0" VerticalAlignment="Top"  Checked ="RadioButton_All_checked" GroupName="Revit_CurrentOrAll" ToolTip="对当前项目中所有链接的Revit对象进行操作"/>
+        </Grid>
+
+        <Grid Name="grid_CAD" HorizontalAlignment="Left" Height="305" Margin="0,80,0,0" VerticalAlignment="Top" Width="320" Visibility="Hidden">
+            <Label Content="操作层次：" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="保持当前" HorizontalAlignment="Left" Margin="110,90,0,0" VerticalAlignment="Top" Checked="RadioButton_Current_checked" GroupName="CAD_CurrentOrAll" IsChecked="true" ToolTip="保持当前链接CAD的状态进行重载、卸载、删除操作"/>
+            <RadioButton Content="所有" HorizontalAlignment="Left" Margin="210,90,0,0" VerticalAlignment="Top"  Checked ="RadioButton_All_checked" GroupName="CAD_CurrentOrAll" ToolTip="对当前项目中所有链接的CAD对象进行操作"/>
+        </Grid>
+    </Grid>
+</Window>

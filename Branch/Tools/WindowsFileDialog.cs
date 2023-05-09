@@ -33,6 +33,12 @@ namespace Branch.Tools
             }
             return null;
         }
+        /// <summary>
+        /// windows文件选择对话窗口，多选
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="filter"></param>
+        /// <returns>用户点击取消按钮时，返回 null </returns>
         public static List<string> MultiSelect(string title = "SCGBox", string filter = "All Files(*.*)|*.*")
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()

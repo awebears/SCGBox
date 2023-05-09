@@ -86,10 +86,10 @@ namespace Revit_2018.ExcutionLibrary.General
                         loadedRevitLinkTypes.Add(exists);
                         continue;
                     }
-                    catch
+                    catch (Exception e)
                     {
                         taskDialog.MainInstruction = "Error!";
-                        taskDialog.MainContent = "请检查链接文件路径是否正确，是否具有读写权限等等后重试！";
+                        taskDialog.MainContent = "请检查链接文件路径是否正确，是否具有读写权限等等后重试" + $"\n {e.GetType().Name} : {e.Message}";
                         taskDialog.Show();
                         trans.RollBack();
                         return Result.Failed;
@@ -248,7 +248,6 @@ namespace Revit_2018.ExcutionLibrary.General
                     trans.Commit();
                 }
             }
-
             return Result.Succeeded;
         }
     }
@@ -256,41 +255,38 @@ namespace Revit_2018.ExcutionLibrary.General
     [Transaction(TransactionMode.Manual)]
     internal class UnloadLinks : IExternalCommand
     {
-        public List<ElementId> RevitLinkTypes { get; set; } = new List<ElementId>();
+        public List<ElementId> RevitLinkTypes { get; } = new List<ElementId>();
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
             //this operation does not need a transaction
             List<RevitLinkType> revitLinkTypes = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkType)).Cast<RevitLinkType>().ToList();
+            if (revitLinkTypes.Count == 0) return Result.Cancelled;
+
             string info = null;
-            if (revitLinkTypes.Count != 0)
+
+            foreach (RevitLinkType revitLinkType in revitLinkTypes)
             {
-                foreach (RevitLinkType revitLinkType in revitLinkTypes)
+                try
                 {
-                    try
-                    {
-                        LinkRevitUtils.UnloadLink(doc, revitLinkType);
-                        RevitLinkTypes.Add(revitLinkType.Id);//collect RevitLinkType to be LinkRevitUtils
-                    }
-                    catch (Exception e)
-                    {
-                        info += e.GetType().ToString() + " : " + e.Message + "\n";
-                        continue;
-                    }
+                    LinkRevitUtils.UnloadLink(doc, revitLinkType);
+                    RevitLinkTypes.Add(revitLinkType.Id);//collect RevitLinkType to be LinkRevitUtils
                 }
-                if (info != null)
+                catch (Exception e)
                 {
-                    TaskDialog taskDialog = new TaskDialog("SCGBox")
-                    { MainInstruction = "Error", TitleAutoPrefix = false, MainContent = info };
-                    taskDialog.Show();
-                    return Result.Failed;
+                    info += e.GetType().ToString() + " : " + e.Message + "\n";
+                    break;
                 }
             }
-            else
+            if (info != null)
             {
-                return Result.Cancelled;
+                TaskDialog taskDialog = new TaskDialog("SCGBox")
+                { MainInstruction = "Error", TitleAutoPrefix = false, MainContent = info };
+                taskDialog.Show();
+                return Result.Failed;
             }
+
             return Result.Succeeded;
         }
     }
@@ -304,21 +300,13 @@ namespace Revit_2018.ExcutionLibrary.General
 
             //call UnloadLinks to unload links first.
             UnloadLinks unloadLinks = new UnloadLinks();
-            if (unloadLinks.Execute(commandData, ref message, elements) == Result.Succeeded)
+            if (unloadLinks.Execute(commandData, ref message, elements) != Result.Succeeded) return Result.Cancelled;
+
+            using (Transaction trans = new Transaction(doc))
             {
-                using (Transaction trans = new Transaction(doc))
-                {
-                    trans.Start("删除链接");
-                    foreach (ElementId id in unloadLinks.RevitLinkTypes)
-                    {
-                        doc.Delete(id);
-                    }
-                    trans.Commit();
-                }
-            }
-            else
-            {
-                return Result.Cancelled;
+                trans.Start("删除链接");
+                unloadLinks.RevitLinkTypes.ForEach(x => doc.Delete(x));
+                trans.Commit();
             }
             return Result.Succeeded;
         }
